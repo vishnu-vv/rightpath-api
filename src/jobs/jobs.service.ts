@@ -12,7 +12,7 @@ export class JobsService {
   ) {}
 
   async create(createJobDto: CreateJobDto): Promise<Job> {
-    return this.jobModel.create(createJobDto);
+    return this.jobModel.create({...createJobDto});
   }
 
   async findAll(): Promise<Job[]> {
@@ -27,9 +27,9 @@ export class JobsService {
     });
   }
 
-  async update(id: number, updateJobDto: UpdateJobDto): Promise<Job> {
+  async update(id: string, updateJobDto: UpdateJobDto): Promise<Job> {
     const job = await this.findOne(id);
-    return this.jobModel.update(updateJobDto);
+    return job.update({...updateJobDto});
   }
 
   async remove(id: string): Promise<void> {
