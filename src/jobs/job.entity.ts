@@ -10,4 +10,10 @@ export class Job extends Model {
 
   @Column({ defaultValue: true })
   isActive: boolean;
+
+  // TODO - Add fields
+  // Required skills array
+  // Good to have skills array
+  // Min and Max salary
+  // coverImage
 }
