@@ -1,5 +1,5 @@
 import { Column, HasMany, Model, Table } from 'sequelize-typescript';
-import { Passion } from 'src/passion/passion.entity';
+import { Passion } from 'src/passions/passion.entity';
 
 
 @Table

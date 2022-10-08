@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PassionService } from './passion.service';
+import { PassionsService } from './passions.service';
 import { CreatePassionDto } from './dto/create-passion.dto';
 import { UpdatePassionDto } from './dto/update-passion.dto';
 
-@Controller('passion')
+@Controller('passions')
 export class PassionController {
-  constructor(private readonly passionService: PassionService) {}
+  constructor(private readonly passionService: PassionsService) {}
 
   @Post()
   create(@Body() createPassionDto: CreatePassionDto) {

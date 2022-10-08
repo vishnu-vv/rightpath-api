@@ -5,7 +5,7 @@ import { UpdatePassionDto } from './dto/update-passion.dto';
 import { Passion } from './passion.entity';
 
 @Injectable()
-export class PassionService {
+export class PassionsService {
   constructor(@Inject(PASSION_REPOSITORY) private readonly passionRepository: typeof Passion) { }
 
   async create(createPassionDto: CreatePassionDto): Promise<Passion> {

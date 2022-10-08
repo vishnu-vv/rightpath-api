@@ -5,7 +5,7 @@ import { DatabaseConfig } from './database.config';
 
 // Models or Entities
 import { Job } from 'src/jobs/job.entity';
-import { Passion } from 'src/passion/passion.entity';
+import { Passion } from 'src/passions/passion.entity';
 import { PassionCategory } from 'src/passion-categories/passion-category.entity';
 import { University } from 'src/universities/university.entity';
 

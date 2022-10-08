@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PASSION_CATEGORY_REPOSITORY } from 'src/core/constants';
-import { Passion } from 'src/passion/passion.entity';
+import { Passion } from 'src/passions/passion.entity';
 import { CreatePassionCategoryDto } from './dto/create-passion-category.dto';
 import { UpdatePassionCategoryDto } from './dto/update-passion-category.dto';
 import { PassionCategory } from './passion-category.entity';
