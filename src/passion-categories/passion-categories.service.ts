@@ -14,7 +14,11 @@ export class PassionCategoriesService {
   }
 
   async findAll(): Promise<PassionCategory[]> {
-    return this.passionCategoryRepository.findAll();
+    return this.passionCategoryRepository.findAll({
+      include: {
+        model: Passion
+      }
+    });
   }
 
   async findOne(id: number): Promise<PassionCategory> {
