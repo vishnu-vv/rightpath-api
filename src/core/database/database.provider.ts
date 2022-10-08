@@ -8,6 +8,7 @@ import { Job } from 'src/jobs/job.entity';
 import { Passion } from 'src/passions/passion.entity';
 import { PassionCategory } from 'src/passion-categories/passion-category.entity';
 import { University } from 'src/universities/university.entity';
+import { Course } from 'src/courses/course.entity';
 
 export const databaseProviders = [
 	{
@@ -15,7 +16,7 @@ export const databaseProviders = [
 		useFactory: async () => {
 			const config: SequelizeOptions = DatabaseConfig() as unknown as SequelizeOptions;
 			const sequelize = new Sequelize(config);
-			sequelize.addModels([Job, Passion, PassionCategory, University]);
+			sequelize.addModels([Job, Passion, PassionCategory, University, Course]);
 			await sequelize.sync();
 			return sequelize;
 		},
