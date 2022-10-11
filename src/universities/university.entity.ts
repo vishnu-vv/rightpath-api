@@ -1,4 +1,5 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, Model, Table, HasMany } from 'sequelize-typescript';
+import { Course } from 'src/courses/course.entity';
 
 @Table
 export class University extends Model {
@@ -10,4 +11,7 @@ export class University extends Model {
 
   @Column
   imageUrl: string;
+
+  @HasMany(() => Course)
+  courses: Course[];
 }

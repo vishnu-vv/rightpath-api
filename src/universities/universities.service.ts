@@ -3,6 +3,7 @@ import { UNIVERSITY_REPOSITORY } from 'src/core/constants';
 import { CreateUniversityDto } from './dto/create-university.dto';
 import { UpdateUniversityDto } from './dto/update-university.dto';
 import { University } from './university.entity';
+import { Course } from 'src/courses/course.entity';
 
 @Injectable()
 export class UniversitiesService {
@@ -13,7 +14,11 @@ export class UniversitiesService {
   }
 
   async findAll(): Promise<University[]> {
-    return this.universityRepository.findAll();
+    return this.universityRepository.findAll({
+      include: {
+        model: Course
+      }
+    });
   }
 
   async findOne(id: string): Promise<University> {
@@ -21,6 +26,9 @@ export class UniversitiesService {
       where: {
         id,
       },
+      include: {
+        model: Course
+      }
     });
   }
 
