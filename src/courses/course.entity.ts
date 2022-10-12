@@ -1,6 +1,7 @@
-import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, ForeignKey, Model, Table, HasMany } from 'sequelize-typescript';
 import { Passion } from 'src/passions/passion.entity';
 import { University } from 'src/universities/university.entity';
+import { Job } from 'src/jobs/job.entity';
 
 @Table
 export class Course extends Model {
@@ -23,4 +24,7 @@ export class Course extends Model {
 
   @BelongsTo(() => Passion)
   passion: Passion
+
+  @HasMany(() => Job)
+  jobs: Job[];
 }

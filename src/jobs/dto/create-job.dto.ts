@@ -8,5 +8,23 @@ export class CreateJobDto {
     description: string;
 
     @ApiProperty()
+    viewedUsers: number;
+
+    @ApiProperty()
+    intrestedUsers: number;
+
+    @ApiProperty()
+    salaryMin: number;
+
+    @ApiProperty()
+    salaryMax: number;
+
+    @ApiProperty()
+    imageUrl: number;
+
+    @ApiProperty()
     active: boolean;
+
+    @ApiProperty()
+	courseId: number;
 }

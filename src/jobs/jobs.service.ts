@@ -3,6 +3,8 @@ import { JOB_REPOSITORY } from 'src/core/constants';
 import { CreateJobDto } from './dto/create-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
 import { Job } from './job.entity';
+import { Skill } from 'src/skills/skill.entity';
+import { Course } from 'src/courses/course.entity';
 
 @Injectable()
 export class JobsService {
@@ -13,7 +15,13 @@ export class JobsService {
   }
 
   async findAll(): Promise<Job[]> {
-    return this.jobRepository.findAll();
+    return this.jobRepository.findAll({
+      include: [{
+        model: Skill
+      },{
+        model: Course
+      }]
+    });
   }
 
   async findOne(id: string): Promise<Job> {
@@ -21,6 +29,11 @@ export class JobsService {
       where: {
         id,
       },
+      include: [{
+        model: Skill
+      },{
+        model: Course
+      }]
     });
   }
 

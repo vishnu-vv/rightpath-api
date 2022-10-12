@@ -3,6 +3,7 @@ import { PASSION_REPOSITORY } from 'src/core/constants';
 import { CreatePassionDto } from './dto/create-passion.dto';
 import { UpdatePassionDto } from './dto/update-passion.dto';
 import { Passion } from './passion.entity';
+import { Course } from 'src/courses/course.entity';
 
 @Injectable()
 export class PassionsService {
@@ -13,7 +14,11 @@ export class PassionsService {
   }
 
   async findAll(): Promise<Passion[]> {
-    return this.passionRepository.findAll();
+    return this.passionRepository.findAll({
+      include: {
+        model: Course
+      }
+    });
   }
 
   async findOne(id: string): Promise<Passion> {
@@ -21,6 +26,9 @@ export class PassionsService {
       where: {
         id,
       },
+      include: {
+        model: Course
+      }
     });
   }
 

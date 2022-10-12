@@ -6,6 +6,7 @@ import { CoursesModule } from './courses/courses.module';
 import { JobsModule } from './jobs/jobs.module';
 import { PassionCategoriesModule } from './passion-categories/passion-categories.module';
 import { PassionsModule } from './passions/passions.module';
+import { SkillsModule } from './skills/skills.module';
 import { UniversitiesModule } from './universities/universities.module';
 
 @Module({
@@ -15,6 +16,7 @@ import { UniversitiesModule } from './universities/universities.module';
     PassionCategoriesModule,
     UniversitiesModule,
     CoursesModule,
+    SkillsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

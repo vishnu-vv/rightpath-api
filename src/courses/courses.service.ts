@@ -5,6 +5,7 @@ import { UpdateCourseDto } from './dto/update-course.dto';
 import { Course } from './course.entity';
 import { University } from 'src/universities/university.entity';
 import { Passion } from 'src/passions/passion.entity';
+import { Job } from 'src/jobs/job.entity';
 
 @Injectable()
 export class CoursesService {
@@ -21,6 +22,9 @@ export class CoursesService {
       },
       {
         model: University
+      },
+      {
+        model: Job
       }]
     });
   }
@@ -35,6 +39,9 @@ export class CoursesService {
       },
       {
         model: University,
+      },
+      {
+        model: Job
       }],
     });
   }

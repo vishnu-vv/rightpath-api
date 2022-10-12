@@ -1,5 +1,6 @@
-import { Column, Model, Table } from 'sequelize-typescript';
-
+import { Column, Model, Table, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Skill } from 'src/skills/skill.entity';
+import { Course } from 'src/courses/course.entity';
 @Table
 export class Job extends Model {
   @Column
@@ -8,12 +9,31 @@ export class Job extends Model {
   @Column
   description: string;
 
-  @Column({ defaultValue: true })
-  isActive: boolean;
+  @Column
+  viewedUsers: string;
 
-  // TODO - Add fields
-  // Required skills array
-  // Good to have skills array
-  // Min and Max salary
-  // coverImage
+  @Column
+  intrestedUsers: string;
+
+  @Column
+  salaryMin: string;
+
+  @Column
+  salaryMax: string;
+
+  @Column
+  imageUrl: string;
+
+  @Column
+  active: string;
+
+  @HasMany(() => Skill)
+  skills: Skill[];
+
+  @ForeignKey(() => Course)
+  @Column
+  courseId: number
+
+  @BelongsTo(() => Course)
+  course: Course
 }
