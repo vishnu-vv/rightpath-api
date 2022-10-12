@@ -1,4 +1,4 @@
-import { BelongsTo, Column, ForeignKey, Model, Table, HasMany } from 'sequelize-typescript';
+import { BelongsTo, Column, ForeignKey, Model, Table, HasMany, DataType } from 'sequelize-typescript';
 import { Passion } from 'src/passions/passion.entity';
 import { University } from 'src/universities/university.entity';
 import { Job } from 'src/jobs/job.entity';
@@ -8,7 +8,7 @@ export class Course extends Model {
   @Column
   title: string;
 
-  @Column
+  @Column({ type: DataType.STRING(1000) })
   overview: string;
 
   @ForeignKey(() => University)
