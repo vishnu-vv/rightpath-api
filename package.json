@@ -21,6 +21,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@adminjs/express": "^5.0.1",
+    "@adminjs/nestjs": "^5.0.1",
+    "@adminjs/sequelize": "^3.0.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
@@ -28,6 +31,9 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^9.0.0",
     "@nestjs/swagger": "^6.1.2",
+    "adminjs": "^6.4.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
