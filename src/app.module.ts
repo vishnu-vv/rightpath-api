@@ -15,6 +15,11 @@ import { SkillsModule } from './skills/skills.module';
 import { UniversitiesModule } from './universities/universities.module';
 
 import { Job } from "./jobs/job.entity";
+import { Course } from './courses/course.entity';
+import { Passion } from './passions/passion.entity';
+import { PassionCategory } from './passion-categories/passion-category.entity';
+import { University } from './universities/university.entity';
+import { Skill } from './skills/skill.entity';
 
 const DEFAULT_ADMIN = {
   email: 'admin@example.com',
@@ -39,7 +44,7 @@ AdminJS.registerAdapter({
       useFactory: () => ({
         adminJsOptions: {
           rootPath: '/admin',
-          resources: [Job],
+          resources: [Job, Course, Passion, PassionCategory, University, Skill],
         },
         auth: {
           authenticate,
