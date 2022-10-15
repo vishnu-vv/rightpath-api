@@ -1,4 +1,11 @@
-import { Column, Model, Table, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import {
+  Column,
+  Model,
+  Table,
+  HasMany,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
 import { Skill } from 'src/skills/skill.entity';
 import { Course } from 'src/courses/course.entity';
 @Table
@@ -32,8 +39,8 @@ export class Job extends Model {
 
   @ForeignKey(() => Course)
   @Column
-  courseId: number
+  courseId: number;
 
   @BelongsTo(() => Course)
-  course: Course
+  course: Course;
 }

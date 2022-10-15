@@ -7,7 +7,9 @@ import { Job } from 'src/jobs/job.entity';
 
 @Injectable()
 export class SkillsService {
-  constructor(@Inject(SKILL_REPOSITORY) private readonly skillRepository: typeof Skill) { }
+  constructor(
+    @Inject(SKILL_REPOSITORY) private readonly skillRepository: typeof Skill,
+  ) {}
 
   async create(createSkillDto: CreateSkillDto): Promise<Skill> {
     return this.skillRepository.create({ ...createSkillDto });
@@ -16,8 +18,8 @@ export class SkillsService {
   async findAll(): Promise<Skill[]> {
     return this.skillRepository.findAll({
       include: {
-        model: Job
-      }
+        model: Job,
+      },
     });
   }
 
@@ -27,8 +29,8 @@ export class SkillsService {
         id,
       },
       include: {
-        model: Job
-      }
+        model: Job,
+      },
     });
   }
 

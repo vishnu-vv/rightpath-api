@@ -1,4 +1,11 @@
-import { BelongsTo, Column, ForeignKey, Model, Table, HasMany } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
+  HasMany,
+} from 'sequelize-typescript';
 import { PassionCategory } from 'src/passion-categories/passion-category.entity';
 import { Course } from 'src/courses/course.entity';
 
@@ -9,10 +16,10 @@ export class Passion extends Model {
 
   @ForeignKey(() => PassionCategory)
   @Column
-  passionCategoryId: number
+  passionCategoryId: number;
 
   @BelongsTo(() => PassionCategory)
-  passionCategory: PassionCategory
+  passionCategory: PassionCategory;
 
   @HasMany(() => Course)
   courses: Course[];

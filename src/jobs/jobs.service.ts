@@ -8,7 +8,9 @@ import { Course } from 'src/courses/course.entity';
 
 @Injectable()
 export class JobsService {
-  constructor(@Inject(JOB_REPOSITORY) private readonly jobRepository: typeof Job) { }
+  constructor(
+    @Inject(JOB_REPOSITORY) private readonly jobRepository: typeof Job,
+  ) {}
 
   async create(createJobDto: CreateJobDto): Promise<Job> {
     return this.jobRepository.create({ ...createJobDto });
@@ -16,11 +18,14 @@ export class JobsService {
 
   async findAll(): Promise<Job[]> {
     return this.jobRepository.findAll({
-      include: [{
-        model: Skill
-      },{
-        model: Course
-      }]
+      include: [
+        {
+          model: Skill,
+        },
+        {
+          model: Course,
+        },
+      ],
     });
   }
 
@@ -29,11 +34,14 @@ export class JobsService {
       where: {
         id,
       },
-      include: [{
-        model: Skill
-      },{
-        model: Course
-      }]
+      include: [
+        {
+          model: Skill,
+        },
+        {
+          model: Course,
+        },
+      ],
     });
   }
 
@@ -46,5 +54,4 @@ export class JobsService {
     const job = await this.findOne(id);
     await job.destroy();
   }
-
 }

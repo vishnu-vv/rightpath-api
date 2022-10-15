@@ -7,6 +7,6 @@ import { skillProviders } from './skills.provider';
 @Module({
   imports: [DatabaseModule],
   controllers: [SkillController],
-  providers: [SkillsService, ...skillProviders]
+  providers: [SkillsService, ...skillProviders],
 })
 export class SkillsModule {}

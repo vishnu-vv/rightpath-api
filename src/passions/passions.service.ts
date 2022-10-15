@@ -7,7 +7,10 @@ import { Course } from 'src/courses/course.entity';
 
 @Injectable()
 export class PassionsService {
-  constructor(@Inject(PASSION_REPOSITORY) private readonly passionRepository: typeof Passion) { }
+  constructor(
+    @Inject(PASSION_REPOSITORY)
+    private readonly passionRepository: typeof Passion,
+  ) {}
 
   async create(createPassionDto: CreatePassionDto): Promise<Passion> {
     return this.passionRepository.create({ ...createPassionDto });
@@ -16,8 +19,8 @@ export class PassionsService {
   async findAll(): Promise<Passion[]> {
     return this.passionRepository.findAll({
       include: {
-        model: Course
-      }
+        model: Course,
+      },
     });
   }
 
@@ -27,12 +30,15 @@ export class PassionsService {
         id,
       },
       include: {
-        model: Course
-      }
+        model: Course,
+      },
     });
   }
 
-  async update(id: string, updatePassionDto: UpdatePassionDto): Promise<Passion> {
+  async update(
+    id: string,
+    updatePassionDto: UpdatePassionDto,
+  ): Promise<Passion> {
     const passion = await this.findOne(id);
     return passion.update({ ...updatePassionDto });
   }
@@ -41,5 +47,4 @@ export class PassionsService {
     const passion = await this.findOne(id);
     await passion.destroy();
   }
-
 }

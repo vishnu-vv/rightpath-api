@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePassionDto {
-	@ApiProperty()
-	title: string;
+  @ApiProperty()
+  title: string;
 
-	@ApiProperty()
-	passionCategoryId: number;
+  @ApiProperty()
+  passionCategoryId: number;
 }

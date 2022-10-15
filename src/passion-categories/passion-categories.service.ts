@@ -7,17 +7,24 @@ import { PassionCategory } from './passion-category.entity';
 
 @Injectable()
 export class PassionCategoriesService {
-  constructor(@Inject(PASSION_CATEGORY_REPOSITORY) private readonly passionCategoryRepository: typeof PassionCategory) { }
+  constructor(
+    @Inject(PASSION_CATEGORY_REPOSITORY)
+    private readonly passionCategoryRepository: typeof PassionCategory,
+  ) {}
 
-  async create(createPassionCategoryDto: CreatePassionCategoryDto): Promise<PassionCategory> {
-    return this.passionCategoryRepository.create({ ...createPassionCategoryDto });
+  async create(
+    createPassionCategoryDto: CreatePassionCategoryDto,
+  ): Promise<PassionCategory> {
+    return this.passionCategoryRepository.create({
+      ...createPassionCategoryDto,
+    });
   }
 
   async findAll(): Promise<PassionCategory[]> {
     return this.passionCategoryRepository.findAll({
       include: {
-        model: Passion
-      }
+        model: Passion,
+      },
     });
   }
 
@@ -27,12 +34,15 @@ export class PassionCategoriesService {
         id,
       },
       include: {
-        model: Passion
-      }
+        model: Passion,
+      },
     });
   }
 
-  async update(id: number, updatePassionCategoryDto: UpdatePassionCategoryDto): Promise<PassionCategory> {
+  async update(
+    id: number,
+    updatePassionCategoryDto: UpdatePassionCategoryDto,
+  ): Promise<PassionCategory> {
     const passionCategory = await this.findOne(id);
     return passionCategory.update({ ...updatePassionCategoryDto });
   }

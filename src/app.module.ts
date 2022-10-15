@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import * as AdminJSSequelize from '@adminjs/sequelize'
-import AdminJS from 'adminjs'
-import { AdminModule } from '@adminjs/nestjs'
+import * as AdminJSSequelize from '@adminjs/sequelize';
+import AdminJS from 'adminjs';
+import { AdminModule } from '@adminjs/nestjs';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -14,7 +14,7 @@ import { PassionsModule } from './passions/passions.module';
 import { SkillsModule } from './skills/skills.module';
 import { UniversitiesModule } from './universities/universities.module';
 
-import { Job } from "./jobs/job.entity";
+import { Job } from './jobs/job.entity';
 import { Course } from './courses/course.entity';
 import { Passion } from './passions/passion.entity';
 import { PassionCategory } from './passion-categories/passion-category.entity';
@@ -28,10 +28,10 @@ const DEFAULT_ADMIN = {
 
 const authenticate = async (email: string, password: string) => {
   if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
-    return Promise.resolve(DEFAULT_ADMIN)
+    return Promise.resolve(DEFAULT_ADMIN);
   }
-  return null
-}
+  return null;
+};
 
 AdminJS.registerAdapter({
   Resource: AdminJSSequelize.Resource,
@@ -49,16 +49,16 @@ AdminJS.registerAdapter({
         auth: {
           authenticate,
           cookieName: 'adminjs',
-          cookiePassword: 'secret'
+          cookiePassword: 'secret',
         },
         sessionOptions: {
           resave: true,
           saveUninitialized: true,
-          secret: 'secret'
+          secret: 'secret',
         },
       }),
     }),
-    ConfigModule.forRoot({isGlobal: true,}),
+    ConfigModule.forRoot({ isGlobal: true }),
     JobsModule,
     PassionsModule,
     PassionCategoriesModule,

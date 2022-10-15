@@ -1,4 +1,12 @@
-import { BelongsTo, Column, ForeignKey, Model, Table, HasMany, DataType } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
+  HasMany,
+  DataType,
+} from 'sequelize-typescript';
 import { Passion } from 'src/passions/passion.entity';
 import { University } from 'src/universities/university.entity';
 import { Job } from 'src/jobs/job.entity';
@@ -13,17 +21,17 @@ export class Course extends Model {
 
   @ForeignKey(() => University)
   @Column
-  universityId: number
+  universityId: number;
 
   @BelongsTo(() => University)
-  university: University
+  university: University;
 
   @ForeignKey(() => Passion)
   @Column
-  passionId: number
+  passionId: number;
 
   @BelongsTo(() => Passion)
-  passion: Passion
+  passion: Passion;
 
   @HasMany(() => Job)
   jobs: Job[];

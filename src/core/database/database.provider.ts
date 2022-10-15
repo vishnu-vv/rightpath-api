@@ -12,14 +12,25 @@ import { Course } from 'src/courses/course.entity';
 import { Skill } from 'src/skills/skill.entity';
 
 export const databaseProviders = [
-	{
-		provide: SEQUELIZE,
-		useFactory: async () => {
-			const config: SequelizeOptions = DatabaseConfig() as unknown as SequelizeOptions;
-			const sequelize = new Sequelize({...config, sync: { alter: { drop: false } }});
-			sequelize.addModels([Job, Passion, PassionCategory, University, Course, Skill]);
-			await sequelize.sync();
-			return sequelize;
-		},
-	},
+  {
+    provide: SEQUELIZE,
+    useFactory: async () => {
+      const config: SequelizeOptions =
+        DatabaseConfig() as unknown as SequelizeOptions;
+      const sequelize = new Sequelize({
+        ...config,
+        sync: { alter: { drop: false } },
+      });
+      sequelize.addModels([
+        Job,
+        Passion,
+        PassionCategory,
+        University,
+        Course,
+        Skill,
+      ]);
+      await sequelize.sync();
+      return sequelize;
+    },
+  },
 ];

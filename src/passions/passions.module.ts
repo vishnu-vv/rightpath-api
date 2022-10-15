@@ -7,6 +7,6 @@ import { passionProviders } from './passions.provider';
 @Module({
   imports: [DatabaseModule],
   controllers: [PassionController],
-  providers: [PassionsService, ...passionProviders]
+  providers: [PassionsService, ...passionProviders],
 })
 export class PassionsModule {}

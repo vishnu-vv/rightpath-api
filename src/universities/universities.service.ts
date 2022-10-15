@@ -7,7 +7,10 @@ import { Course } from 'src/courses/course.entity';
 
 @Injectable()
 export class UniversitiesService {
-  constructor(@Inject(UNIVERSITY_REPOSITORY) private readonly universityRepository: typeof University) { }
+  constructor(
+    @Inject(UNIVERSITY_REPOSITORY)
+    private readonly universityRepository: typeof University,
+  ) {}
 
   async create(createUniversityDto: CreateUniversityDto): Promise<University> {
     return this.universityRepository.create({ ...createUniversityDto });
@@ -16,8 +19,8 @@ export class UniversitiesService {
   async findAll(): Promise<University[]> {
     return this.universityRepository.findAll({
       include: {
-        model: Course
-      }
+        model: Course,
+      },
     });
   }
 
@@ -27,12 +30,15 @@ export class UniversitiesService {
         id,
       },
       include: {
-        model: Course
-      }
+        model: Course,
+      },
     });
   }
 
-  async update(id: string, updateUniversityDto: UpdateUniversityDto): Promise<University> {
+  async update(
+    id: string,
+    updateUniversityDto: UpdateUniversityDto,
+  ): Promise<University> {
     const university = await this.findOne(id);
     return university.update({ ...updateUniversityDto });
   }
@@ -41,5 +47,4 @@ export class UniversitiesService {
     const university = await this.findOne(id);
     await university.destroy();
   }
-
 }
