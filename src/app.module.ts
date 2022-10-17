@@ -22,8 +22,8 @@ import { University } from './universities/university.entity';
 import { Skill } from './skills/skill.entity';
 
 const DEFAULT_ADMIN = {
-  email: 'admin@example.com',
-  password: 'password',
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASSWORD,
 };
 
 const authenticate = async (email: string, password: string) => {
