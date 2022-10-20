@@ -17,16 +17,16 @@ export class Job extends Model {
   description: string;
 
   @Column
-  viewedUsers: string;
+  viewedUsers: number;
 
   @Column
-  intrestedUsers: string;
+  intrestedUsers: number;
 
   @Column
-  salaryMin: string;
+  salaryMin: number;
 
   @Column
-  salaryMax: string;
+  salaryMax: number;
 
   @Column
   imageUrl: string;

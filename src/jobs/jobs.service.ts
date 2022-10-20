@@ -5,6 +5,7 @@ import { UpdateJobDto } from './dto/update-job.dto';
 import { Job } from './job.entity';
 import { Skill } from 'src/skills/skill.entity';
 import { Course } from 'src/courses/course.entity';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class JobsService {
@@ -16,8 +17,9 @@ export class JobsService {
     return this.jobRepository.create({ ...createJobDto });
   }
 
-  async findAll(): Promise<Job[]> {
-    return this.jobRepository.findAll({
+  async findAll({ salaryMin, salaryMax, skills }): Promise<Job[]> {
+    let query = {
+      where: {},
       include: [
         {
           model: Skill,
@@ -26,7 +28,37 @@ export class JobsService {
           model: Course,
         },
       ],
-    });
+    }
+
+    if (salaryMin) {
+      query.where = {
+        ...query.where,
+        salaryMin: {
+          [Op.gte]: parseInt(salaryMin)
+        }
+      }
+    }
+
+    if (salaryMax) {
+      query.where = {
+        ...query.where,
+        salaryMax: {
+          [Op.lte]: parseInt(salaryMax)
+        }
+      }
+    }
+
+    if (skills) {
+      query.include = query.include.map((data) => data.model === Skill ? {
+        model: Skill, where: {
+          id: {
+            [Op.or]: skills.split(',')
+          }
+        }
+      } : data);
+    };
+
+    return this.jobRepository.findAll(query);
   }
 
   async findOne(id: string): Promise<Job> {
