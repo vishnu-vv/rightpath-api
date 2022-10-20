@@ -6,14 +6,16 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './dto/create-course.dto';
+import { FilterCourseDto } from './dto/filter-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
 
 @Controller('courses')
 export class CourseController {
-  constructor(private readonly courseService: CoursesService) {}
+  constructor(private readonly courseService: CoursesService) { }
 
   @Post()
   create(@Body() createCourseDto: CreateCourseDto) {
@@ -21,8 +23,8 @@ export class CourseController {
   }
 
   @Get()
-  findAll() {
-    return this.courseService.findAll();
+  findAll(@Query() filters: FilterCourseDto) {
+    return this.courseService.findAll(filters);
   }
 
   @Get(':id')

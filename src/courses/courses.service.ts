@@ -6,31 +6,69 @@ import { Course } from './course.entity';
 import { University } from 'src/universities/university.entity';
 import { Passion } from 'src/passions/passion.entity';
 import { Job } from 'src/jobs/job.entity';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class CoursesService {
   constructor(
     @Inject(COURSE_REPOSITORY) private readonly courseRepository: typeof Course,
-  ) {}
+  ) { }
 
   async create(createCourseDto: CreateCourseDto): Promise<Course> {
     return this.courseRepository.create({ ...createCourseDto });
   }
 
-  async findAll(): Promise<Course[]> {
-    return this.courseRepository.findAll({
+  async findAll({ passionIds, universityIds, locations, durations }): Promise<Course[]> {
+    let query = {
+      where: {},
       include: [
         {
-          model: Passion,
+          model: University,
         },
         {
-          model: University,
+          model: Passion,
         },
         {
           model: Job,
         },
       ],
-    });
+    }
+
+    if (passionIds) {
+      query.where = {
+        ...query.where,
+        passionId: {
+          [Op.or]: passionIds.split(',')
+        }
+      }
+    }
+    if (universityIds) {
+      query.where = {
+        ...query.where,
+        universityId: {
+          [Op.or]: universityIds.split(',')
+        }
+      }
+    }
+    if (locations) {
+      query.include = query.include.map((data) => data.model === University ? {
+        model: University, where: {
+          location: {
+            [Op.or]: locations.split(',')
+          }
+        }
+      } : data);
+    };
+    if (durations) {
+      query.where = {
+        ...query.where,
+        duration: {
+          [Op.or]: durations.split(',')
+        }
+      }
+    }
+
+    return this.courseRepository.findAll(query);
   }
 
   async findOne(id: string): Promise<Course> {
