@@ -8,6 +8,9 @@ export class CreateCourseDto {
   overview: string;
 
   @ApiProperty()
+  fee: number;
+
+  @ApiProperty()
   universityId: number;
 
   @ApiProperty()

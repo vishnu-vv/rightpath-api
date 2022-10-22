@@ -19,6 +19,9 @@ export class Course extends Model {
   @Column({ type: DataType.STRING(1000) })
   overview: string;
 
+  @Column
+  fee: number;
+
   @ForeignKey(() => University)
   @Column
   universityId: number;
