@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Duration } from '../course.entity';
 
 export class CreateCourseDto {
   @ApiProperty()
@@ -6,6 +7,9 @@ export class CreateCourseDto {
 
   @ApiProperty()
   overview: string;
+  
+  @ApiProperty({ enum: Duration})
+  duration: Duration;
 
   @ApiProperty()
   fee: number;

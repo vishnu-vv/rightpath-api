@@ -11,6 +11,15 @@ import { Passion } from 'src/passions/passion.entity';
 import { University } from 'src/universities/university.entity';
 import { Job } from 'src/jobs/job.entity';
 
+export enum Duration {
+  LessThanOneYear = 0,
+  OneYear = 1,
+  TwoYears = 2,
+  ThreeYears = 3,
+  FourYears = 4,
+  MoreThanFourYears = 5,
+}
+
 @Table
 export class Course extends Model {
   @Column
@@ -18,6 +27,9 @@ export class Course extends Model {
 
   @Column({ type: DataType.STRING(1000) })
   overview: string;
+ 
+  @Column
+  duration: Duration;
 
   @Column
   fee: number;
