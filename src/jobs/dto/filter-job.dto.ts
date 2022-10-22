@@ -4,6 +4,10 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 export class FilterJobDto {
   @ApiPropertyOptional()
   @IsOptional()
+  courseIds: string[];
+
+  @ApiPropertyOptional()
+  @IsOptional()
   salaryMin: number;
 
   @ApiPropertyOptional()
