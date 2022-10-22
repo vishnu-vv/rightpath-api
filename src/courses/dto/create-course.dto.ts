@@ -8,8 +8,8 @@ export class CreateCourseDto {
   @ApiProperty()
   overview: string;
   
-  @ApiProperty({ enum: Duration})
-  duration: Duration;
+  @ApiProperty({ enum: Duration })
+  duration: Duration = Duration['4 years'];
 
   @ApiProperty()
   fee: number;

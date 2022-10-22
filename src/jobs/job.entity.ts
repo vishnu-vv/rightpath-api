@@ -32,7 +32,7 @@ export class Job extends Model {
   imageUrl: string;
 
   @Column
-  active: string;
+  active: boolean;
 
   @HasMany(() => Skill)
   skills: Skill[];

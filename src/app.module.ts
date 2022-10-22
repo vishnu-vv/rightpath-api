@@ -44,7 +44,25 @@ AdminJS.registerAdapter({
       useFactory: () => ({
         adminJsOptions: {
           rootPath: '/admin',
-          resources: [Job, Course, Passion, PassionCategory, University, Skill],
+          resources: [Job,
+            {
+              resource: Course,
+              options: {
+                properties: {
+                  duration: {
+                    type: 'string',
+                    availableValues: [
+                      { label: 'Less than 1 year', value: 0 },
+                      { label: '1 year', value: 1 },
+                      { label: '2 years', value: 2 },
+                      { label: '3 years', value: 3 },
+                      { label: '4 years', value: 4 },
+                      { label: 'More than 4 years', value: 5 },
+                    ]
+                  },
+                },
+              },
+            }, Passion, PassionCategory, University, Skill],
         },
         auth: {
           authenticate,
@@ -69,4 +87,4 @@ AdminJS.registerAdapter({
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

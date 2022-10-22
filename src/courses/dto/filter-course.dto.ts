@@ -1,5 +1,6 @@
 import { IsOptional } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Duration } from '../course.entity';
 
 export class FilterCourseDto {
   @ApiPropertyOptional()
@@ -12,7 +13,7 @@ export class FilterCourseDto {
   
   @ApiPropertyOptional()
   @IsOptional()
-  durations: string[];
+  durations: Duration[];
   
   @ApiPropertyOptional()
   @IsOptional()

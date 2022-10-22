@@ -12,12 +12,12 @@ import { University } from 'src/universities/university.entity';
 import { Job } from 'src/jobs/job.entity';
 
 export enum Duration {
-  LessThanOneYear = 0,
-  OneYear = 1,
-  TwoYears = 2,
-  ThreeYears = 3,
-  FourYears = 4,
-  MoreThanFourYears = 5,
+  'Less than 1 year' = 0,
+  '1 year' = 1,
+  '2 years' = 2,
+  '3 years' = 3,
+  '4 years' = 4,
+  'More than 4 years' = 5,
 }
 
 @Table

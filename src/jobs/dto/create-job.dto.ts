@@ -23,7 +23,7 @@ export class CreateJobDto {
   imageUrl: number;
 
   @ApiProperty()
-  active: boolean;
+  active: boolean = true;
 
   @ApiProperty()
   courseId: number;
