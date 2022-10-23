@@ -4,7 +4,7 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 export class FilterJobDto {
   @ApiPropertyOptional()
   @IsOptional()
-  courseIds: string[];
+  courseId: string;
 
   @ApiPropertyOptional()
   @IsOptional()
@@ -17,9 +17,4 @@ export class FilterJobDto {
   @ApiPropertyOptional()
   @IsOptional()
   skills: number[];
-  
-  // TODO - Interested Users
-  // @ApiPropertyOptional()
-  // @IsOptional()
-  // intersetedUsers: string[];
 }

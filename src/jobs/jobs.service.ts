@@ -17,7 +17,7 @@ export class JobsService {
     return this.jobRepository.create({ ...createJobDto });
   }
 
-  async findAll({ courseIds, salaryMin, salaryMax, skills }): Promise<Job[]> {
+  async findAll({ courseId, salaryMin, salaryMax, skills }): Promise<Job[]> {
     let query = {
       where: {},
       include: [
@@ -30,11 +30,11 @@ export class JobsService {
       ],
     }
 
-    if (courseIds) {
+    if (courseId) {
       query.where = {
         ...query.where,
         courseId: {
-          [Op.or]: courseIds.split(',')
+          [Op.or]: courseId
         }
       }
     }
