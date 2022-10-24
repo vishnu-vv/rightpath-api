@@ -6,6 +6,7 @@ import { Course } from './course.entity';
 import { University } from 'src/universities/university.entity';
 import { Passion } from 'src/passions/passion.entity';
 import { Job } from 'src/jobs/job.entity';
+import { Skill } from 'src/skills/skill.entity';
 import { Op } from 'sequelize';
 
 @Injectable()
@@ -30,6 +31,7 @@ export class CoursesService {
         },
         {
           model: Job,
+          include: [Skill]
         },
       ],
     }
