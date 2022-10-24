@@ -34,6 +34,9 @@ export class Course extends Model {
   @Column
   fee: number;
 
+  @Column
+  imageUrl: string;
+
   @ForeignKey(() => University)
   @Column
   universityId: number;

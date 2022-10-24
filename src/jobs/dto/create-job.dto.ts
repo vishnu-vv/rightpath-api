@@ -20,7 +20,7 @@ export class CreateJobDto {
   salaryMax: number;
 
   @ApiProperty()
-  imageUrl: number;
+  imageUrl: string;
 
   @ApiProperty()
   active: boolean = true;

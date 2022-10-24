@@ -19,4 +19,7 @@ export class CreateCourseDto {
 
   @ApiProperty()
   passionId: number;
+
+  @ApiProperty()
+  imageUrl: string;
 }
