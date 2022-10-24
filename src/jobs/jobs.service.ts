@@ -34,7 +34,7 @@ export class JobsService {
       query.where = {
         ...query.where,
         courseId: {
-          [Op.or]: courseId
+          [Op.eq]: parseInt(courseId)
         }
       }
     }
